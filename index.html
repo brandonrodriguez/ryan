@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Is it Ryan's Birthday?</title>
+<style>
+  body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  #result {
+    font-size: 5em;
+    font-weight: bold;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+  <div id="result"></div>
+
+  <script>
+    function checkDate() {
+      const now = new Date();
+      const options = { timeZone: 'America/Denver' };
+      const currentDate = new Date(now.toLocaleString('en-US', options));
+
+      const month = currentDate.getMonth(); // 0-indexed (0 for January, 3 for April)
+      const day = currentDate.getDate();
+
+      const resultDiv = document.getElementById('result');
+
+      if (month === 3 && day === 23) {
+        resultDiv.textContent = "YES";
+        resultDiv.style.color = "green";
+      } else {
+        resultDiv.textContent = "NO";
+        resultDiv.style.color = "red";
+      }
+    }
+
+    checkDate();
+    setInterval(checkDate, 60000); // Update every minute (optional, for real-time changes)
+  </script>
+</body>
+</html>
